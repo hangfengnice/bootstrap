@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper ref="mySwiper">
+    <swiper ref="mySwiper" :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item in page" :key="item.id">
           <div class="icon-img">
@@ -29,70 +29,20 @@
 <script>
 export default {
   name: "HomeIcons",
+  props: {
+    list: Array
+  },
   data() {
     return {
-      iconList: [
-        {
-          id: "001",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p64/1809/46/ddb72937ac938a02.jpg_256x160_5f99ddba.jpg",
-          desc: "西安"
-        },
-        {
-          id: "002",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p70/1809/e7/4941057a6aae702.jpg_256x160_9fee6ccb.jpg",
-          desc: "丽江"
-        },
-        {
-          id: "003",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p48/201302/28/bc44faa497db0dcf93835fbb.jpg_256x160_0ba13461.jpg",
-          desc: "泰国"
-        },
-        {
-          id: "004",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p66/201304/17/384810d022dd28f793835fbb.jpg_256x160_6a7ec251.jpg",
-          desc: "三亚"
-        },
-        {
-          id: "005",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p64/1809/46/ddb72937ac938a02.jpg_256x160_5f99ddba.jpg",
-          desc: "西安"
-        },
-        {
-          id: "006",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p70/1809/e7/4941057a6aae702.jpg_256x160_9fee6ccb.jpg",
-          desc: "丽江"
-        },
-        {
-          id: "007",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p48/201302/28/bc44faa497db0dcf93835fbb.jpg_256x160_0ba13461.jpg",
-          desc: "泰国"
-        },
-        {
-          id: "008",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p66/201304/17/384810d022dd28f793835fbb.jpg_256x160_6a7ec251.jpg",
-          desc: "三亚"
-        },
-        {
-          id: "009",
-          imgUrl:
-            "https://imgs.qunarzz.com/p/p19/1809/b9/2a3d362aabcbb02.jpg_256x160_28907832.jpg",
-          desc: "重庆"
-        }
-      ]
+      swiperOption: {
+        autoplay: false
+      }
     };
   },
   computed: {
     pages() {
       const pages = [];
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
@@ -110,8 +60,8 @@ export default {
   height: 0;
   padding-bottom: 50%;
 }
-.icons{
-  margin-top: .1rem;
+.icons {
+  margin-top: 0.1rem;
 }
 .icon {
   position: relative;

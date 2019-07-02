@@ -1,12 +1,24 @@
-const path = require('path')
-const resolve = dir => path.join(__dirname, dir)
+const path = require("path");
+const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
   devServer: {
-    open: true
+    open: true,
+    proxy: {
+      '/api': {
+          target: 'http://localhost:8080/',
+          changeOrigin: true,
+          ws: true,
+          pathRewrite: {
+            '^/api': ''
+          }
+      }
+  }
+    
   },
   chainWebpack: config => {
-    config.resolve.alias
-    .set('@',resolve('src/assets/resetCss'))
-  }
-}
+    config.resolve.alias.set("@", resolve("src/assets/resetCss"));
+  },
+  publicPath: "./"
+};
+

@@ -1,19 +1,20 @@
 <template>
   <div>
-    <HomeHeader></HomeHeader>
-    <HomeSwiper></HomeSwiper>
-    <HomeIcons></HomeIcons>
-    <HomeRecommend></HomeRecommend>
-    <HomeWeekend></HomeWeekend>
+    <HomeHeader :city='city'></HomeHeader>
+    <HomeSwiper :list='swiperList'></HomeSwiper>
+    <HomeIcons :list='iconList'></HomeIcons>
+    <HomeRecommend :list='recommendList'></HomeRecommend>
+    <HomeWeekend :list='weekendList'></HomeWeekend>
   </div>
 </template>
 
 <script>
-import HomeHeader from './components/Header'
-import HomeSwiper from './components/Swiper'
-import HomeIcons from './components/Icons'
-import HomeRecommend from './components/Recommend'
-import HomeWeekend from './components/Weekend'
+import HomeHeader from "./components/Header";
+import HomeSwiper from "./components/Swiper";
+import HomeIcons from "./components/Icons";
+import HomeRecommend from "./components/Recommend";
+import HomeWeekend from "./components/Weekend";
+import axios from "axios";
 
 export default {
   name: "Home",
@@ -23,10 +24,37 @@ export default {
     HomeIcons,
     HomeRecommend,
     HomeWeekend
+  },
+  data() {
+    return {
+      city: "",
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
+    }
+  },
+  methods: {
+    getHomeInfo() {
+      axios.get("/api/mock/index1.json").then(this.getHomeInfoSucc);
+    },
+    getHomeInfoSucc(res) {
+       res = res.data
+      if(res.ret && res.data){
+       const data = res.data
+       this.city = data.city
+       this.swiperList = data.swiperList
+       this.iconList = data.iconList
+       this.recommendList = data.recommendList
+       this.weekendList = data.weekendList
+      }
+    }
+  },
+  mounted() {
+    this.getHomeInfo();
   }
-}
+};
 </script>
 
 <style lang='scss' scoped>
-
 </style>
