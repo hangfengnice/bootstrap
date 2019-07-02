@@ -1,15 +1,18 @@
 <template>
-  <div class=header>
-   <div class="header-left">
-<div class="iconfont back-icon">&#xe624;</div>
-   </div>
-   <div class="header-input">
-     <i class="iconfont">&#xe632;</i>
-     输入城市/景点/游玩主题</div>
-   <div class="header-right">{{this.city}}
-     <i class="iconfont">&#xe600;</i>
-   </div>
-
+  <div class="header">
+    <div class="header-left">
+      <div class="iconfont back-icon">&#xe624;</div>
+    </div>
+    <div class="header-input">
+      <i class="iconfont">&#xe632;</i>
+      输入城市/景点/游玩主题
+    </div>
+    <router-link to='/city'>
+      <div class="header-right">
+        {{this.city}}
+        <i class="iconfont">&#xe600;</i>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -19,41 +22,41 @@ export default {
   props: {
     city: String
   }
-
-}
+};
 </script>
 
 <style lang='scss' scoped>
-@import '@/varibles.scss';
+@import "@/varibles.scss";
 
-.header{
-  line-height: .86rem;
+.header {
+  line-height: 0.86rem;
   display: flex;
   background-color: $bgcolor;
   color: #fff;
-  .header-left{
-    width: .64rem;
+  .header-left {
+    width: 0.64rem;
     float: left;
-    .back-icon{
+    .back-icon {
       text-align: center;
-      font-size: .4rem;
+      font-size: 0.4rem;
     }
   }
-  .header-input{
-    flex:1;
-    height: .64rem;
-    line-height: .64rem;
-    margin-top: .12rem;
-    margin-left: .2rem;
-    padding-left: .2rem;
+  .header-input {
+    flex: 1;
+    height: 0.64rem;
+    line-height: 0.64rem;
+    margin-top: 0.12rem;
+    margin-left: 0.2rem;
+    padding-left: 0.2rem;
     background-color: #fff;
-    border-radius: .1rem;
+    border-radius: 0.1rem;
     color: #ccc;
   }
-  .header-right{
+  .header-right {
     width: 1.24rem;
     float: right;
     text-align: center;
+    color: #fff;
   }
 }
 </style>
