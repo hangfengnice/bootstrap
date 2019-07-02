@@ -2,14 +2,9 @@
   <div class="wrapper">
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
-      <swiper-slide v-for='item in swiperList' :key='item.id'>
-        <img
-          class="swiper-img"
-          :src="item.imgUrl"
-          alt
-        />
+      <swiper-slide v-for="item in swiperList" :key="item.id">
+        <img class="swiper-img" :src="item.imgUrl" alt />
       </swiper-slide>
-      
 
       <!-- Optional controls -->
       <div class="swiper-pagination" slot="pagination"></div>
@@ -25,17 +20,19 @@ export default {
       swiperOption: {
         pagination: ".swiper-pagination",
         loop: true
+        // autoplay: 2000
       },
       swiperList: [
         {
-          id:'001',
-          imgUrl: "https://imgs.qunarzz.com/p/tts3/1806/c7/264a320e9e8c3c02.jpg_r_390x260x90_4e3ba596.jpg"
+          id: "001",
+          imgUrl:
+            "https://imgs.qunarzz.com/p/tts3/1806/c7/264a320e9e8c3c02.jpg_r_390x260x90_4e3ba596.jpg"
         },
         {
-          id:'002',
-          imgUrl: "https://imgs.qunarzz.com/p/tts3/1806/c7/264a320e9e8c3c02.jpg_r_390x260x90_4e3ba596.jpg"
+          id: "002",
+          imgUrl:
+            "https://imgs.qunarzz.com/p/tts3/1806/c7/264a320e9e8c3c02.jpg_r_390x260x90_4e3ba596.jpg"
         }
-
       ]
     };
   }
@@ -43,8 +40,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.wrapper /deep/ .swiper-pagination-bullet-active{
-  background-color: #fff ;
+.wrapper /deep/ .swiper-pagination-bullet-active {
+  background-color: #fff;
 }
 .wrapper {
   overflow: hidden;
