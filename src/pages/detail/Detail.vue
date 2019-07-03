@@ -1,13 +1,17 @@
 <template>
   <div>
-    detail12aheloo
-    
+    <DetailBanner></DetailBanner>
   </div>
 </template>
 
 <script>
-export default {
+import DetailBanner from './components/Banner'
 
+export default {
+    name:'Detail',
+    components: {
+      DetailBanner
+    }
 }
 </script>
 
