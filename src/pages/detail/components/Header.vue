@@ -3,7 +3,7 @@
     <router-link tag="div" to="/" class="header-abs" v-show="showAbs">
       <div class="iconfont header-abs-back">&#xe624;</div>
     </router-link>
-    <div class="header-fixed" v-show="!showAbs" :style='opacityStyle'>
+    <div class="header-fixed" v-show="!showAbs" :style="opacityStyle">
       <router-link to="/">
         <div class="iconfont header-fixed-back">&#xe624;</div>
       </router-link>景点详情
@@ -22,24 +22,24 @@ export default {
       }
     };
   },
-  methods:{
-handleScroll(){
-  const top = document.documentElement.scrollTop
-if(top > 60){
-  let opacity = top / 140
-  opacity = opacity > 1 ? 1 : opacity
-  this.opacityStyle = {opacity}
-  this.showAbs= false
-}else{
-  this.showAbs = true
-}
-}
+  methods: {
+    handleScroll() {
+      const top = document.documentElement.scrollTop;
+      if (top > 60) {
+        let opacity = top / 140;
+        opacity = opacity > 1 ? 1 : opacity;
+        this.opacityStyle = { opacity };
+        this.showAbs = false;
+      } else {
+        this.showAbs = true;
+      }
+    }
   },
   activated() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener("scroll", this.handleScroll);
   },
-  deactivated(){
-    window.removeEventListener('scroll', this.handleScroll)
+  deactivated() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
@@ -62,6 +62,7 @@ if(top > 60){
   }
 }
 .header-fixed {
+  z-index: 2;
   position: fixed;
   left: 0;
   top: 0;
