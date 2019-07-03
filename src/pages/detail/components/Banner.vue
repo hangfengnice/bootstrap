@@ -3,17 +3,17 @@
     <div class="banner" @click="handleGallaryClick">
       <img
         class="banner-img"
-        src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg"
+        :src="bannerImg"
         alt
       />
       <div class="banner-info">
-        <div class="banner-title">dalian</div>
+        <div class="banner-title">{{this.sightName}}</div>
         <div class="banner-number">
-          <i class="iconfont">&#xe686;</i>39
+          <i class="iconfont">&#xe686;</i>{{this.gallaryImgs.length}}
         </div>
       </div>
     </div>
-    <CommonGallary @close="handleGallaryClose" :imgs="imgs" v-show="showGallary"></CommonGallary>
+    <CommonGallary @close="handleGallaryClose" :imgs="gallaryImgs" v-show="showGallary"></CommonGallary>
   </div>
 </template>
 
@@ -24,13 +24,14 @@ export default {
   components: {
     CommonGallary
   },
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
+  },
   data() {
     return {
-      showGallary: false,
-      imgs: [
-        "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg",
-        "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg"
-      ]
+      showGallary: false
     };
   },
   methods: {
