@@ -7,5 +7,7 @@ git clone git@github.com:hangfengnice/vue-travel.git
 
 npm install
 
-npm run serve
+npm start
 ```
+
+## 点睛之笔
