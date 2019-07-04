@@ -24,41 +24,30 @@ export default {
   },
   data() {
     return {
-      sightName: "杭州西湖音乐喷泉@-@(AAAAA景区)",
-      bannerImg:
-        "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg",
-      gallaryImgs: [
-        "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg",
-        "http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png"
-      ],
-      list: [
-        {
-          title: "成人票",
-          children: [
-            {
-              title: "成人三馆联票",
-              children: [
-                {
-                  title: "成人三馆联票 - 杭州西湖"
-                }
-              ]
-            },
-            {
-              title: "成人五馆联票"
-            }
-          ]
-        },
-        {
-          title: "学生票"
-        },
-        {
-          title: "儿童票"
-        },
-        {
-          title: "特惠票"
-        }
-      ]
+      sightName: "",
+      bannerImg: "",
+      gallaryImgs: [],
+      list: []
     };
+  },
+
+  methods: {
+    getDetailInfo() {
+      axios.get("/api/mock/detail.json").then(this.getInfo);
+    },
+    getInfo(res) {
+      res = res.data;
+      if (res.ret && res.data) {
+        const data = res.data;
+        this.sightName = data.sightName;
+        this.bannerImg = data.bannerImg;
+        this.gallaryImgs = data.gallaryImgs;
+        this.list = data.categoryList;
+      }
+    }
+  },
+  mounted() {
+    this.getDetailInfo();
   }
 };
 </script>
