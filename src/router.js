@@ -15,6 +15,10 @@ export default new Router({
       component: Home
     },
     {
+      path: '*',
+      component: Home
+    },
+    {
       path: '/city',
       name: 'city',
       component: () => import('./pages/city/City.vue')
@@ -28,6 +32,7 @@ export default new Router({
       name: 'detail',
       component: Detail
     }
+
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

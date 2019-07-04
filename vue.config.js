@@ -20,5 +20,5 @@ module.exports = {
       .set("@", resolve("src/assets/resetCss"))
       .set("common", resolve("src/common"));
   },
-  publicPath: "./"
+  publicPath: "/"
 };
